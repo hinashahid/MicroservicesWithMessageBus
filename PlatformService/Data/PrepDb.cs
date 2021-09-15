@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System;
 using PlatformService.Models;
-
+using Microsoft.EntityFrameworkCore;
 namespace PlatformService.Data{
 
     public static class PrepDb
@@ -24,7 +24,7 @@ namespace PlatformService.Data{
                     context.Database.Migrate();
                 }
                 catch(Exception ex){
-                    Console.WriteLine($"--> Could not run migrations : {ex.Message} }")
+                    Console.WriteLine($"--> Could not run migrations : {ex.Message}");
                 }
             }
             if(!context.Platforms.Any())
