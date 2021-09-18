@@ -2,7 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
-    "\\Models"
+    "\\Data",
+    "\\Dtos",
+    "\\Models",
+    "\\Profiles"
   ],
+  "SelectedNode": "\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

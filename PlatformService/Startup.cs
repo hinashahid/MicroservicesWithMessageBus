@@ -15,7 +15,7 @@ using PlatformService.Data;
 using Microsoft.EntityFrameworkCore;
 using PlatformService.SyncDataServices.Http;
 using System.Net.Http;
-
+using PlatformService.AsyncDataService;
 namespace PlatformService
 {
     public class Startup
@@ -43,7 +43,7 @@ namespace PlatformService
             }
             services.AddScoped<IPlatformRepo,PlatformRepo>();
             
-            services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>()
+            services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>()            
              .ConfigureHttpMessageHandlerBuilder(builder =>
             {
                 builder.PrimaryHandler = new HttpClientHandler
@@ -52,7 +52,7 @@ namespace PlatformService
                 };
             });
 
-
+            services.AddSingleton<IMessageBusClient, MessageBusClient>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
